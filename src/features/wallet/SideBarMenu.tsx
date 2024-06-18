@@ -19,7 +19,7 @@ import { useStore } from '../store';
 import { TransfersDetailsModal } from '../transfer/TransfersDetailsModal';
 import { TransferContext } from '../transfer/types';
 
-import { useAccounts, useDisconnectFns } from './hooks/multiProtocol';
+import { useAccounts, useConnectorNames, useDisconnectFns } from './hooks/multiProtocol';
 import { AccountInfo } from './hooks/types';
 
 export function SideBarMenu({
@@ -144,6 +144,8 @@ export function SideBarMenu({
 }
 
 function AccountSummary({ account, address }: { account: AccountInfo; address: Address }) {
+  const connectorNames = useConnectorNames();
+
   const onClickCopy = async () => {
     if (!address) return;
     await tryClipboardSet(address);
@@ -160,7 +162,7 @@ function AccountSummary({ account, address }: { account: AccountInfo; address: A
         <Identicon address={address} size={40} />
       </div>
       <div className="flex flex-col mx-3 items-start">
-        <div className="text-gray-800 text-sm font-normal">{account.connectorName || 'Wallet'}</div>
+        <div className="text-gray-800 text-sm font-normal">{connectorNames[account.protocol]}</div>
         <div className="text-xs text-left truncate w-64">{address ? address : 'Unknown'}</div>
       </div>
     </button>
