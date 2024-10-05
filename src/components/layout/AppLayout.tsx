@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 
-import { APP_NAME, BACKGROUND_COLOR, BACKGROUND_IMAGE } from '../../consts/app';
+import { APP_NAME } from '../../consts/app';
 import { Footer } from '../nav/Footer';
 import { Header } from '../nav/Header';
 
@@ -14,7 +14,6 @@ export function AppLayout({ children }: PropsWithChildren) {
         <title>{APP_NAME}</title>
       </Head>
       <div
-        style={styles.container}
         id="app-content"
         className="relative flex flex-col justify-between h-full min-h-screen w-full min-w-screen"
       >
@@ -28,12 +27,12 @@ export function AppLayout({ children }: PropsWithChildren) {
   );
 }
 
-const styles = {
-  container: {
-    backgroundColor: BACKGROUND_COLOR,
-    backgroundImage: BACKGROUND_IMAGE,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-};
+// const styles = {
+//   container: {
+//     backgroundColor: BACKGROUND_COLOR,
+//     backgroundImage: BACKGROUND_IMAGE,
+//     backgroundSize: 'cover',
+//     backgroundRepeat: 'no-repeat',
+//     backgroundPosition: 'center',
+//   },
+// };
